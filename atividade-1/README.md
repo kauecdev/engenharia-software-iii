@@ -40,7 +40,7 @@ function calcularTotal() {
 ```js
 function calcularTotal() {
 
-  const valorCompra = caclularValorCompra();
+  const valorCompra = calcularValorCompra();
 
   if (valorCompra > 400) {
     return valorCompra * 0.9;
@@ -49,7 +49,7 @@ function calcularTotal() {
   return valorCompra;
 }
 
-function caclularValorCompra() {
+function calcularValorCompra() {
   return quantidade * precoItem;
 }
 ```
