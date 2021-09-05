@@ -180,7 +180,7 @@ class BasicUser {
 }
 
 @Entity('user_address')
-class StudantAddress {
+class UserAddress {
   @PrimaryColumn()
   id: string;
 
@@ -223,9 +223,6 @@ class StudantAddress {
 
 @Entity('studant')
 class Studant extends BasicUser {
-  @PrimaryColumn()
-  readonly id: string;
-
   @ManyToOne(() => AccountRole, account_role => account_role.id)
   @JoinColumn({ name: 'account_role_id' })
   account_role: AccountRole;
@@ -237,6 +234,10 @@ class Studant extends BasicUser {
   @ManyToOne(() => Course, course => course.id)
   @JoinColumn({ name: "course_id" })
   course: Course;
+  
+  @OneToOne(() => UserAddress)
+  @JoinColumn()
+  address: UserAddress;
 
   @Column()
   school_enrollment: string;
