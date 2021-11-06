@@ -19,7 +19,7 @@ public class Employee {
 
     // atributos, getters and setters...
 
-    private boolean isSuitableForPromotion() {
+    public boolean isSuitableForPromotion() {
         // algoritmo para calcular tempo trabalhado, serviços prestados
         // e outros fatores que determinem sua promoção
     }
@@ -40,12 +40,12 @@ public class Employee {
 
     private Date joiningDate;
 
-    // atributos, getters and setters...
+    // atributos, getters e setters...
 
 }
 
 class HumanRecoursesService {
-   private boolean isSuitableForPromotion(Employee employee) {
+   public boolean isSuitableForPromotion(Employee employee) {
         // algoritmo para calcular tempo trabalhado, serviços prestados
         // e outros fatores que determinem sua promoção
    }
@@ -71,24 +71,70 @@ public double getBasePayAmountByRole(Role role) {
 Depois:
 
 ```java
-abstract class EmployeeRole {
-    abstract double getBasePayAmount();
+inbterface EmployeeRole {
+    double getBasePayAmount();
 }
 
-public class Recruiter extends EmployeeRole {
-    private double getBasePayAmount() {
+public class Recruiter extends Employee implements EmployeeRole {
+    public double getBasePayAmount() {
         return 2000;
     }
 }
 
-public class MANAGER extends EmployeeRole {
-    private double getBasePayAmount() {
+public class Manager extends Employee implements EmployeeRole {
+    public double getBasePayAmount() {
         return 3500;
+    }
+}
+
+private class Programmer extends Employee implements EmployeeRole {
+    public double getBasePayAmount() {
+        return 6000;
     }
 }
 ```
 
-## L - Liskov Substitution Principle 
+## L - Liskov Substitution Principle
+
+Antes:
+
+```java
+public class Employee {
+    // atributos, getters e setters
+    
+    public void sendJobProposalEmail() {
+        // Enviar e-mail para possível candidato
+    }
+}
+
+public class Recruiter extends Employee implements EmployeeRole {}
+
+private class Programmer extends Employee implements EmployeeRole {}
+
+// Recruiter recruiter = new Recruiter();
+// recruiter.sendJobProposalEmail(); 😀
+
+// Programmer programmer = new Programmer();
+// programmer.sendJobProposalEmail(); 🤔
+```
+
+Depois:
+
+```java
+public class Employee {}
+
+public class HRSectorEmployee extends Employee {
+    public void sendJobProposalEmail() {
+        // Enviar e-mail para possível candidato
+    }
+}
+
+public class ITSectorEmployee extends Employee {}
+
+public class Recruiter HRSectorEmployee Employee implements EmployeeRole {}
+
+private class Programmer extends ITSectorEmployee implements EmployeeRole {}
+```
 
 ## I - Interface Segregation Principle
 
