@@ -138,4 +138,57 @@ private class Programmer extends ITSectorEmployee implements EmployeeRole {}
 
 ## I - Interface Segregation Principle
 
+Antes:
+
+```java
+public interface InterviewSchedule {
+    public void schedulePresentialInterview();
+    public void scheduleOnlineInterview();
+}
+
+public class PresentialInterviewScheduleImpl implements InterviewSchedule {
+    public void schedulePresentialInterview() {
+        // implementação do método
+    }
+    
+    public void scheduleOnlineInterview() {
+        throw new UnsupportedOperationException();
+    }
+}
+
+public class OnlineInterviewScheduleImpl implements InterviewSchedule {
+    public void schedulePresentialInterview() {
+        throw new UnsupportedOperationException();
+    }
+    
+    public void scheduleOnlineInterview() {
+        // implementação do método
+    }
+}
+```
+
+Depois:
+
+```java
+public interface PresentialInterviewSchedule {
+    public void schedulePresentialInterview();
+}
+
+public interface OnlineInterviewSchedule {
+    public void scheduleOnlineInterview();
+}
+
+public class PresentialInterviewScheduleImpl implements PresentialInterviewSchedule {
+    public void schedulePresentialInterview() {
+        // implementação do método
+    }
+}
+
+public class OnlineInterviewScheduleImpl implements OnlineInterviewSchedule {
+    public void scheduleOnlineInterview() {
+        // implementação do método
+    }
+}
+```
+
 ## D - Dependency Inversion Principle
