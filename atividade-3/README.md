@@ -192,3 +192,37 @@ public class OnlineInterviewScheduleImpl implements OnlineInterviewSchedule {
 ```
 
 ## D - Dependency Inversion Principle
+
+Antes:
+
+```java
+public class EmployeeNotificationService {
+
+   private Recruiter recruiter;
+   
+   private Programmer programmer;
+   
+   public sendNotificationToRecruiter(Recruiter recruiter) {
+        // enviar notificação para recrutador;
+   }
+   
+   public sendNotificationToProgrammer(Programmer programmer) {
+        // enviar notificação para programador;
+   }
+
+}
+```
+
+Depois:
+
+```java
+public class EmployeeNotificationService {
+
+   private EmployeeRole employee;
+   
+   public sendNotificationToEmployee(Employee employee) {
+        // enviar notificação para empregado;
+   }
+
+}
+```
