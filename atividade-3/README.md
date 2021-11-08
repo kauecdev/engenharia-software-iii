@@ -71,7 +71,7 @@ public double getBasePayAmountByRole(Role role) {
 Depois:
 
 ```java
-ibterface EmployeeRole {
+interface EmployeeRole {
     double getBasePayAmount();
 }
 
@@ -218,9 +218,9 @@ Depois:
 ```java
 public class EmployeeNotificationService {
 
-   private EmployeeRole employee;
+   private EmployeeRole employeeRole;
    
-   public sendNotificationToEmployee(Employee employee) {
+   public sendNotificationToEmployee(EmployeeRole employeeRole) {
         // enviar notificação para empregado;
    }
 
