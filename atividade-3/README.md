@@ -71,7 +71,7 @@ public double getBasePayAmountByRole(Role role) {
 Depois:
 
 ```java
-inbterface EmployeeRole {
+ibterface EmployeeRole {
     double getBasePayAmount();
 }
 
@@ -131,7 +131,7 @@ public class HRSectorEmployee extends Employee {
 
 public class ITSectorEmployee extends Employee {}
 
-public class Recruiter HRSectorEmployee Employee implements EmployeeRole {}
+public class Recruiter extends HRSectorEmployee Employee implements EmployeeRole {}
 
 private class Programmer extends ITSectorEmployee implements EmployeeRole {}
 ```
